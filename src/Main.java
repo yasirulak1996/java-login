@@ -2,31 +2,45 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner Scanner = new Scanner(System.in);
-        System.out.print("do you have a account yes or no");
-        String account = Scanner.nextLine();
-        if(account.equals("yes")){
-            System.out.print("enter user name");
-            String user1 =Scanner.nextLine();
-            System.out.println("enter password");
-            String pass1 =Scanner.nextLine();
-            Login.login(String user1,String pass1);
-            if (found ==true){
-                System.out.println("successfully logged");
-            } else{
-                System.out.println("incorrect loggins");
+        Scanner scanner = new Scanner(System.in);
+        Login loginSystem = new Login();
+
+        while (true) { // Loop to run the program continuously
+            System.out.print("Do you have an account? (yes/no/exit): ");
+            String account = scanner.nextLine();
+
+            if (account.equalsIgnoreCase("yes")) { // Case-insensitive comparison
+                System.out.print("Enter username: ");
+                String user1 = scanner.nextLine();
+                System.out.print("Enter password: ");
+                String pass1 = scanner.nextLine();
+
+                boolean isLoggedIn = loginSystem.login(user1, pass1);
+                if (isLoggedIn) {
+                    System.out.println("Successfully logged in!");
+                } else {
+                    System.out.println("Incorrect login credentials.");
+                }
+
+            } else if (account.equalsIgnoreCase("no")) {
+                System.out.print("Enter new username: ");
+                String name = scanner.nextLine();
+                System.out.print("Enter new password: ");
+                String password = scanner.nextLine();
+
+                loginSystem.sign_up(name, password);
+
+                System.out.println("Account created successfully!");
+            } else if (account.equalsIgnoreCase("exit")) {
+                System.out.println("Exiting program...");
+                break; // Exit the loop
+            } else {
+                System.out.println("Invalid input. Please enter 'yes', 'no', or 'exit'.");
             }
-        } else if (account.equals("no")) {
-            String name =Scanner.nextLine();
-            String password =Scanner.nextLine();
-            Login.sign_up(String name,String password);
-
-
         }
 
-
+        scanner.close();
     }
 }
-
 
 

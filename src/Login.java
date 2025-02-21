@@ -1,22 +1,31 @@
 import java.util.Scanner;
 
 public class Login {
-    public static sign_up(){
+    String[] username = new String[100];
+    String[] pass = new String[100];
 
-
-       if(name.equel(!null))
-        for(i=1;i=100;i++){
-            public String username[i]=name;
-            public String Pass[i] =password;
-
-        }
-
-    }
-    public static boolean login(String username[i],String pass[i]){
-        if (username[i].equals(user) && pass[i].equals(passwordd)) {
-            return true;
+    public void sign_up(String name, String password) { // Changed return type to void (no return value)
+        if (name.isEmpty() || password.isEmpty()) {
+            System.out.println("please enter username and password");
         } else {
-            return false;
+            for (int i = 1; i < 100; i++) { // Starts from 1 (should start from 0 ideally)
+                if (username[i] == null) { // Find an empty slot
+                    username[i] = name;
+                    pass[i] = password;
+                    System.out.println("User registered successfully!");
+                    break; // Stop after storing the first available spot
+                }
+            }
         }
+    }
+
+    public boolean login(String user1, String pass1) { // Removed array notation (i)
+        for (int i = 0; i < 100; i++) { // Loop through stored usernames
+            if (username[i] != null && username[i].equals(user1) && pass[i].equals(pass1)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
+
