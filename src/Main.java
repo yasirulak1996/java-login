@@ -5,11 +5,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Login loginSystem = new Login();
 
-        while (true) { // Loop to run the program continuously
+        while (true) {
             System.out.print("Do you have an account? (yes/no/exit): ");
             String account = scanner.nextLine();
 
-            if (account.equalsIgnoreCase("yes")) { // Case-insensitive comparison
+            if (account.equalsIgnoreCase("yes")) {
                 System.out.print("Enter username: ");
                 String user1 = scanner.nextLine();
                 System.out.print("Enter password: ");
